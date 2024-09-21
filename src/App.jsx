@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.jsx
+import { Routes, Route, Link } from "react-router-dom";
+import Home from './Home';
+import About from './About';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App () {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
+      <aside className="w-64 bg-gray-800 text-white p-4 fixed h-full">
+        <h1 className="text-xl font-bold mb-6">My Design System</h1>
+        <nav>
+          <ul>
+            <li className="mb-2">
+              <Link to="/" className="hover:text-blue-400">Home</Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/about" className="hover:text-blue-400">About</Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/components" className="hover:text-blue-400">Components</Link>
+            </li>
+          </ul>
+        </nav>
+      </aside>
 
-export default App
+      {/* Main Content */}
+      <div className="ml-64 p-6 flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+    </div>
+  );
+}
