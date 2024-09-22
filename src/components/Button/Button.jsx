@@ -94,7 +94,7 @@ export default function Button ({
   return (
     <button
       onClick={onClick}
-      className={`${classNames} ${textClasses[text]} ${sizeClasses[size]} ${roundedClasses[rounded]} ${variantClass} ${classNames}`}
+      className={`${textClasses[text]} ${sizeClasses[size]} ${roundedClasses[rounded]} ${variantClass} ${classNames}`}
     >
       {children}
     </button>
